@@ -1,0 +1,420 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <AssemblyName>BATaxiMod</AssemblyName>
+    <Product>Oren's Taxi Mod</Product>
+    <Version>1.0.0</Version>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>latest</LangVersion>
+    <RestoreAdditionalProjectSources>
+      https://api.nuget.org/v3/index.json;
+      https://nuget.bepinex.dev/v3/index.json;
+      https://nuget.samboy.dev/v3/index.json
+    </RestoreAdditionalProjectSources>
+    <RootNamespace>BATaxiMod</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <Optimize>true</Optimize>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BepInEx.Unity.IL2CPP" Version="6.0.0-be.*" IncludeAssets="compile" />
+    <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="BehaviorDesigner.Runtime">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\BehaviorDesigner.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="BigAmbitions">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\BigAmbitions.dll</HintPath>
+    </Reference>
+    <Reference Include="BigAmbitions.AI">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\BigAmbitions.AI.dll</HintPath>
+    </Reference>
+    <Reference Include="BigAmbitions.Characters">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\BigAmbitions.Characters.dll</HintPath>
+    </Reference>
+    <Reference Include="BigAmbitions.DebugMode">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\BigAmbitions.DebugMode.dll</HintPath>
+    </Reference>
+    <Reference Include="BigAmbitions.Factories">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\BigAmbitions.Factories.dll</HintPath>
+    </Reference>
+    <Reference Include="BigAmbitions.GameAnalytics">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\BigAmbitions.GameAnalytics.dll</HintPath>
+    </Reference>
+    <Reference Include="BigAmbitions.InteriorDesigner">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\BigAmbitions.InteriorDesigner.dll</HintPath>
+    </Reference>
+    <Reference Include="BigAmbitions.Items">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\BigAmbitions.Items.dll</HintPath>
+    </Reference>
+    <Reference Include="BigAmbitions.Neighborhoods">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\BigAmbitions.Neighborhoods.dll</HintPath>
+    </Reference>
+    <Reference Include="BigAmbitions.SoundSystem">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\BigAmbitions.SoundSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="Cinemachine">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\Cinemachine.dll</HintPath>
+    </Reference>
+    <Reference Include="DayNightCycle">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\DayNightCycle.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\DOTween.dll</HintPath>
+    </Reference>
+    <Reference Include="ExternalPlugins">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\ExternalPlugins.dll</HintPath>
+    </Reference>
+    <Reference Include="Facepunch.Steamworks.Win64">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\Facepunch.Steamworks.Win64.dll</HintPath>
+    </Reference>
+    <Reference Include="HBAO.Demo.HighDefinition.Runtime">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\HBAO.Demo.HighDefinition.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="HBAO.Demo.Runtime">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\HBAO.Demo.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="HBAO.HighDefinition.Runtime">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\HBAO.HighDefinition.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="HBAO.Runtime">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\HBAO.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="HGExtensions">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\HGExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="HGPlugins">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\HGPlugins.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppMono.Security">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\Il2CppMono.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2Cppmscorlib">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\Il2Cppmscorlib.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppSystem">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\Il2CppSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppSystem.Configuration">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\Il2CppSystem.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppSystem.Core">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\Il2CppSystem.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppSystem.Data">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\Il2CppSystem.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppSystem.Drawing">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\Il2CppSystem.Drawing.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppSystem.Numerics">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\Il2CppSystem.Numerics.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppSystem.Runtime.Serialization">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\Il2CppSystem.Runtime.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppSystem.Xml">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\Il2CppSystem.Xml.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppSystem.Xml.Linq">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\Il2CppSystem.Xml.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="JimmysUnityUtilities">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\JimmysUnityUtilities.dll</HintPath>
+    </Reference>
+    <Reference Include="NaughtyAttributes.Core">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\NaughtyAttributes.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="OdinAOTSupport">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\OdinAOTSupport.dll</HintPath>
+    </Reference>
+    <Reference Include="OdinSerializer">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\OdinSerializer.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.AI.Navigation">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\Unity.AI.Navigation.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Animation.Rigging">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\Unity.Animation.Rigging.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\Unity.Burst.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Unsafe">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\Unity.Burst.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.InputSystem">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\Unity.InputSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.InputSystem.ForUI">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\Unity.InputSystem.ForUI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.InputSystem.RebindingUI">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\Unity.InputSystem.RebindingUI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mathematics">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\Unity.Mathematics.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.Runtime">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.HighDefinition.Config.Runtime">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\Unity.RenderPipelines.HighDefinition.Config.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.HighDefinition.Runtime">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\Unity.RenderPipelines.HighDefinition.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Analytics">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\Unity.Services.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\Unity.Services.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Configuration">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\Unity.Services.Core.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Device">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\Unity.Services.Core.Device.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Environments.Internal">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\Unity.Services.Core.Environments.Internal.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Internal">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\Unity.Services.Core.Internal.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Registration">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\Unity.Services.Core.Registration.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Scheduler">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\Unity.Services.Core.Scheduler.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Telemetry">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\Unity.Services.Core.Telemetry.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Threading">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\Unity.Services.Core.Threading.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Timeline">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\Unity.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualEffectGraph.Runtime">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\Unity.VisualEffectGraph.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AccessibilityModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.AccessibilityModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AIModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.AIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AndroidJNIModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.AndroidJNIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AnimationModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.AnimationModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.AssetBundleModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.AudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClothModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.ClothModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClusterInputModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.ClusterInputModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClusterRendererModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.ClusterRendererModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ContentLoadModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.ContentLoadModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CrashReportingModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.CrashReportingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.DirectorModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.DirectorModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.DSPGraphModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.DSPGraphModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.GameCenterModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.GameCenterModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.GIModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.GIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.GridModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.GridModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.HotReloadModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.HotReloadModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.ImageConversionModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.InputLegacyModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.InputModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.JSONSerializeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.LocalizationModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.LocalizationModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ParticleSystemModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.ParticleSystemModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PerformanceReportingModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.PerformanceReportingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Physics2DModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.Physics2DModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.PhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ProfilerModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.ProfilerModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PropertiesModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.PropertiesModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ScreenCaptureModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.ScreenCaptureModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SharedInternalsModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.SharedInternalsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpriteMaskModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.SpriteMaskModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpriteShapeModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.SpriteShapeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.StreamingModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.StreamingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SubstanceModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.SubstanceModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SubsystemsModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.SubsystemsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TerrainModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.TerrainModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TerrainPhysicsModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.TerrainPhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextCoreFontEngineModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.TextCoreFontEngineModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextCoreTextEngineModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.TextCoreTextEngineModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.TextRenderingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TilemapModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.TilemapModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TLSModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.TLSModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIElementsModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.UIElementsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.UIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UmbraModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.UmbraModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityAnalyticsCommonModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.UnityAnalyticsCommonModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityAnalyticsModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.UnityAnalyticsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityConnectModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.UnityConnectModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityCurlModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.UnityCurlModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityTestProtocolModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.UnityTestProtocolModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestAssetBundleModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestAudioModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.UnityWebRequestModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestTextureModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestWWWModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VehiclesModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.VehiclesModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VFXModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.VFXModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VideoModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.VideoModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VirtualTexturingModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.VirtualTexturingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VRModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.VRModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.WindModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.WindModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.XRModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityEngine.XRModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityUIExtensions">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Big Ambitions\BepInEx\interop\UnityUIExtensions.dll</HintPath>
+    </Reference>
+    </ItemGroup>
+</Project>
